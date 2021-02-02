@@ -32,22 +32,25 @@ color_tuple = {1: sd.COLOR_RED, 2: sd.COLOR_ORANGE,
                7: sd.COLOR_PURPLE}
 
 
-def draw_branches(start_point, angle, length):
+#TODO Сделать для больших n
+
+
+def draw_branches(start_point, angle, length, n, alfa):
     if length < 10:
         return
-    for x in range(5):
-        alfa = random.uniform(-30 * 1.4, 30 * 1.4)
+    for x, alfa in zip(range(n), range(-30, 31, 60)):
         vector = sd.get_vector(start_point=start_point, angle=angle + alfa, length=length, width=3)
         color = random.randint(1, 7)
         vector.draw(color=color_tuple[color])
-        coef = random.uniform(.75 * .2, .75 * 1.2)
-        draw_branches(vector.end_point, angle + alfa, length * coef)
+        coefficient = random.uniform(.75 * .8, .75 * 1.2)
+        draw_branches(vector.end_point, angle + alfa, length * coefficient, n, alfa)
+        if sd.user_want_exit():
+            break
 
 
 point = sd.get_point(300, 30)
 angle, length = 90, 100
-draw_branches(point, angle, length)
-
+draw_branches(point, angle, length, n=2, alfa=30)
 # 4) Усложненное задание (делать по желанию)
 # - сделать рандомное отклонение угла ветвей в пределах 40% от 30-ти градусов
 # - сделать рандомное отклонение длины ветвей в пределах 20% от коэффициента 0.75

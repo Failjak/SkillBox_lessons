@@ -36,7 +36,7 @@ color_tuple = {1: sd.COLOR_RED, 2: sd.COLOR_ORANGE,
 
 
 def draw_branches(start_point, angle, length, n, alfa):
-    if length < 10:
+    if length < 15:
         return
     for x, alfa in zip(range(n), range(-30, 31, 60)):
         vector = sd.get_vector(start_point=start_point, angle=angle + alfa, length=length, width=3)

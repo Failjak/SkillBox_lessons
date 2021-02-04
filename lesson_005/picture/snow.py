@@ -1,13 +1,15 @@
 import simple_draw as sd
 import random
+
+
 def snowfall(n):
     speed, coord, length = [], [], []
     for i in range(n):
         speed.append(random.randint(10, 50))
-        x = random.randint(50, 550)
-        y = random.randint(400, 550)
+        x = random.randint(10, 250)
+        y = random.randint(300, 350)
         coord.append([x, y])
-        length.append(random.randint(10, 25))
+        length.append(random.randint(5, 10))
 
     while True:
         for i in range(n):
@@ -23,7 +25,7 @@ def snowfall(n):
             point = sd.get_point(x0, y0)
             sd.snowflake(center=point, length=length[i])
 
-            if coord[i][1] <= 2*length[i] and speed != 0:
+            if coord[i][1] <= 20 and speed != 0:
                 speed[i] = 0
                 coord[i].pop()
                 coord[i].pop()
@@ -36,20 +38,20 @@ def snowfall(n):
 
             if len(coord[i]) == 0:
                 length.pop(i)
-                length.insert(i, random.randint(10, 40))
+                length.insert(i, random.randint(5, 10))
                 coord.remove([])
-                x = random.randint(50, 550)
-                y = random.randint(500, 550)
+                x = random.randint(10, 250)
+                y = random.randint(300, 350)
                 coord.insert(i, [x, y])
 
         sd.sleep(0.1)
         if sd.user_want_exit():
             break
-    sd.pause()
+    # sd.pause()
 
 
-def main():
-    snowfall(10)
+# def main():
+#     snowfall(10)
 
 
-main()
+# main()

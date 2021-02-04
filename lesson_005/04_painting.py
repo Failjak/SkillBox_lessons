@@ -1,4 +1,25 @@
 # -*- coding: utf-8 -*-
+import simple_draw as sd
+from picture.tree import drawing_tree
+from picture.home import draw_wall
+from picture.rainbow import draw_rainbow
+from picture.smile import draw_smile
+from picture.snow import snowfall
+sd.resolution = (1200, 700)
+sd.start_drawing()
+
+drawing_tree(point=sd.get_point(1020, 5), angle=90, length=70, color=sd.COLOR_DARK_ORANGE, width=4)
+draw_wall()
+draw_rainbow(1050, -600, 1600, 12)
+draw_smile(350, 220, 50)
+snowfall(10)
+
+
+sd.finish_drawing()
+sd.pause()
+
+
+
 
 # Создать пакет, в который скопировать функции отрисовки из предыдущего урока
 #  - радуги
